@@ -1,0 +1,113 @@
+/* Material themes: 1 felt · 2 fluted glass · 5 speckled graphite · 9 grainy gradients · 10 grass · 12 paper · 23 risograph · 24 marble · 26 wood */
+:root {
+  /* felt: fine speckle + soft isotropic mottling (no directional weave, or it reads as linen) */
+  --felt-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --felt-mottle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045' numOctaves='3' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.32' numOctaves='2' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3Crect width='100%25' height='100%25' filter='url(%23b)' opacity='.55'/%3E%3C/svg%3E");
+
+  /* graphite: only the extreme ends of high-frequency noise survive, so we get sparse light and dark flecks */
+  --speck-fine: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .66 0 0 0 0 .66 0 0 0 0 .64 9 0 0 0 -6.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+  --speck-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 9 0 0 0 -6.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+  --speck-coarse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.32' numOctaves='2' seed='14' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .6 0 0 0 0 .6 0 0 0 0 .6 10 0 0 0 -7.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+
+  /* paper: turbulence lit from the side gives real fibre relief */
+  --paper-bump: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.04 .06' numOctaves='5' seed='2' stitchTiles='stitch' result='n'/%3E%3CfeDiffuseLighting in='n' lighting-color='%23fffaf0' surfaceScale='1.6'%3E%3CfeDistantLight azimuth='50' elevation='62'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
+/* ---------- 1 · Felt ---------- */
+.theme-felt {
+  --ink: #fbf3df; --muted: #e8dec4; --head: Georgia, "Times New Roman", serif; --body: var(--sans); --radius: 14px;
+  --card-bg: #f2e6cb; --card-ink: #3a2a1f; --card-muted: #5a4636; --card-tex: var(--felt-mottle), var(--felt-noise); --card-blend: soft-light, multiply;
+  --btn-bg: #b8412b; --btn-ink: #fff; --btn-bd: #fbf3df; --tag-bg: #3a2a1f; --tag-ink: #fbf3df;
+  background-color: #2a5548; background-image: var(--felt-mottle), var(--felt-noise); background-blend-mode: soft-light, overlay;
+}
+.theme-felt .card, .theme-felt .stat, .theme-felt .rows li { outline: 2px dashed rgba(184, 65, 43, .8); outline-offset: -8px; } /* running stitch */
+
+/* ---------- 2 · Fluted glass (canvas: orbs seen through cylinder lenses) ---------- */
+.theme-fluted {
+  --ink: #fff; --muted: #e4e0f5; --head: var(--sans); --body: var(--sans); --radius: 18px; --blur: blur(14px);
+  --plate: rgba(10, 8, 30, .62); --plate-blur: blur(10px);
+  --card-bg: rgba(12, 10, 34, .58); --card-ink: #fff; --card-muted: #d9d4f0; --card-bd: 1px solid rgba(255, 255, 255, .3);
+  --card-tex: repeating-linear-gradient(90deg, rgba(255, 255, 255, .12) 0 2px, rgba(255, 255, 255, 0) 2px 14px);   /* ribbed card faces */
+  --btn-bg: #fff; --btn-ink: #14102e; --btn-bd: #fff; --tag-bg: #ff9f43; --tag-ink: #2a1400;
+  background: #0d0b24;
+}
+
+/* ---------- 5 · Speckled graphite ---------- */
+.theme-graphite {
+  --ink: #f1f1ee; --muted: #d3d4d6; --head: "Helvetica Neue", Arial, sans-serif; --body: var(--sans); --radius: 6px;
+  --card-bg: #3b3e43; --card-ink: #f4f4f1; --card-muted: #d0d2d6; --card-tex: var(--speck-coarse), var(--speck-fine), var(--speck-dark);
+  --card-bd: 1px solid #55595f; --card-shadow: 0 6px 16px rgba(0, 0, 0, .35);
+  --btn-bg: #f2c230; --btn-ink: #1b1b1b; --btn-bd: #f2c230; --tag-bg: #f2c230; --tag-ink: #1b1b1b;
+  background-color: #25272b; background-image: var(--speck-coarse), var(--speck-fine), var(--speck-dark), var(--felt-mottle);
+  background-blend-mode: normal, normal, normal, soft-light;
+}
+.theme-graphite h1 { letter-spacing: -.02em; }
+
+/* ---------- 9 · Grainy gradients (canvas) ---------- */
+.theme-grainy {
+  --ink: #fff; --muted: #f4e8ff; --head: var(--sans); --body: var(--sans); --radius: 20px;
+  --plate: rgba(22, 8, 52, .58); --plate-blur: blur(8px);
+  --card-bg: rgba(22, 8, 52, .66); --card-ink: #fff; --card-muted: #eadcff; --card-bd: 1px solid rgba(255, 255, 255, .25); --blur: blur(8px);
+  --btn-bg: #ffd9b0; --btn-ink: #2a0a40; --btn-bd: #ffd9b0; --tag-bg: #ffd9b0; --tag-ink: #2a0a40;
+  background: #1a0b4d;
+}
+.theme-grainy h1 { font-weight: 800; letter-spacing: -.02em; }
+
+/* ---------- 10 · Grass (canvas blades) ---------- */
+.theme-grass {
+  --ink: #f6f2d9; --muted: #e9e6c2; --head: Georgia, serif; --body: var(--sans); --radius: 12px;
+  --plate: rgba(10, 36, 16, .82); --plate-blur: blur(4px);
+  --card-bg: #f6f1d9; --card-ink: #1f3317; --card-muted: #44552d; --card-shadow: 0 6px 16px rgba(0, 0, 0, .35);
+  --btn-bg: #ffd23f; --btn-ink: #1c2b12; --btn-bd: #ffd23f; --tag-bg: #1f3317; --tag-ink: #f6f1d9;
+  background: #12301a;
+}
+
+/* ---------- 12 · Paper ---------- */
+.theme-paper {
+  --ink: #2d2a26; --muted: #4a443d; --head: Georgia, "Times New Roman", serif; --body: "Iowan Old Style", Georgia, serif; --radius: 2px;
+  --card-bg: #fbf7ec; --card-ink: #2d2a26; --card-muted: #4a443d; --card-tex: var(--paper-bump); --card-blend: multiply;
+  --card-shadow: 0 1px 1px rgba(0, 0, 0, .12), 0 8px 18px rgba(60, 40, 10, .18);
+  --btn-bg: #b3261e; --btn-ink: #fff; --btn-bd: #b3261e; --tag-bg: #2d2a26; --tag-ink: #fbf7ec; --focus: #b3261e;
+  background-color: #f1e9d6; background-image: var(--paper-bump); background-blend-mode: multiply;
+}
+.theme-paper .cards .card:nth-child(odd) { transform: rotate(-.8deg); }
+.theme-paper .cards .card:nth-child(even) { transform: rotate(.7deg); }
+.theme-paper .card::before { content: ""; position: absolute; top: -10px; left: 50%; width: 70px; height: 20px; transform: translateX(-50%) rotate(-3deg); background: rgba(214, 196, 150, .78); box-shadow: 0 1px 2px rgba(0, 0, 0, .15); }
+
+/* ---------- 23 · Risograph (canvas: two grainy spot inks, out of register) ---------- */
+.theme-riso {
+  --ink: #0b3d91; --muted: #1f3f7a; --head: "Arial Black", Impact, sans-serif; --body: var(--sans); --radius: 4px; --focus: #ff48b0;
+  --plate: rgba(243, 238, 227, .9);
+  --card-bg: #f8f4ea; --card-ink: #10245a; --card-muted: #2c3f73;
+  --card-bd: 2px solid #0078bf; --card-shadow: 5px 5px 0 #ff48b0;
+  --btn-bg: #ff48b0; --btn-ink: #10245a; --btn-bd: #10245a; --tag-bg: #0078bf; --tag-ink: #fff; --accent: #0078bf; --accent-ink: #fff;
+  background: #f3eee3;
+}
+.theme-riso h1 { color: #0078bf; text-shadow: 4px 3px 0 rgba(255, 72, 176, .85); letter-spacing: -.01em; }   /* the pink plate slipped */
+.theme-riso h2 { color: #0078bf; }
+
+/* ---------- 24 · Marble (canvas: domain-warped veins) ---------- */
+.theme-marble {
+  --ink: #1f1d1a; --muted: #3d3934; --head: Didot, "Bodoni MT", "Playfair Display", Georgia, serif; --body: var(--sans); --radius: 2px; --focus: #9a7428;
+  --plate: rgba(250, 248, 244, .84); --plate-blur: blur(6px);
+  --card-bg: rgba(255, 253, 249, .9); --card-ink: #1f1d1a; --card-muted: #4a443c; --card-bd: 1px solid #c9a14a; --card-shadow: 0 14px 34px rgba(40, 30, 10, .12); --blur: blur(4px);
+  --btn-bg: #1f1d1a; --btn-ink: #f7f1e3; --btn-bd: #1f1d1a; --tag-bg: #ecdcb4; --tag-ink: #4a3712; --accent: #b08a3a; --accent-ink: #fff;
+  background: #f2efe9;
+}
+.theme-marble h1 { font-weight: 400; letter-spacing: .01em; }
+.theme-marble .eyebrow { color: #8a6d2a; letter-spacing: .28em; }
+.theme-marble h2 { font-weight: 400; letter-spacing: .04em; }
+
+/* ---------- 26 · Wood grain (canvas: planks of warped growth rings) ---------- */
+.theme-wood {
+  --ink: #fff6e8; --muted: #f1dfc4; --head: Georgia, "Times New Roman", serif; --body: var(--sans); --radius: 6px; --focus: #ffd27a;
+  --plate: rgba(36, 19, 8, .8); --plate-blur: blur(4px);
+  --card-bg: #f6ecd9; --card-ink: #3a2412; --card-muted: #5e4128; --card-tex: var(--paper-bump); --card-blend: multiply;
+  --card-shadow: 0 2px 0 #c9b28a, 0 14px 26px rgba(0, 0, 0, .45);
+  --btn-bg: #d9a24a; --btn-ink: #241405; --btn-bd: #d9a24a; --tag-bg: #3a2412; --tag-ink: #f6ecd9; --accent: #9b5a22; --accent-ink: #fff;
+  background: #5a3418;
+}
+.theme-wood .card::before, .theme-wood .card::after { content: ""; position: absolute; top: 10px; width: 10px; height: 10px; border-radius: 50%;   /* brass screws */
+  background: radial-gradient(circle at 35% 35%, #ffe7a8, #b8862f 55%, #6b4a14); box-shadow: 0 1px 1px rgba(0, 0, 0, .4); }
+.theme-wood .card::before { left: 10px; }
+.theme-wood .card::after { right: 10px; }

@@ -1,0 +1,97 @@
+/* Pattern themes: 7 blueprint · 8 halftone · 11 dither · 13 contour · 15 mosaic · 17 stipple · 18 square dots · 22 ASCII */
+:root {
+  /* square-dot lattice, 24px pitch: one grey dot + three orange sizes */
+  --sq-grey: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect x='10' y='10' width='4' height='4' fill='%23111' fill-opacity='.4'/%3E%3C/svg%3E");
+  --sq-12: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect x='6' y='6' width='12' height='12' fill='%23ff5a1f'/%3E%3C/svg%3E");
+  --sq-8: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect x='8' y='8' width='8' height='8' fill='%23ff5a1f'/%3E%3C/svg%3E");
+  --sq-4: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect x='10' y='10' width='4' height='4' fill='%23ff5a1f'/%3E%3C/svg%3E");
+}
+
+/* ---------- 7 · Blueprint grid ---------- */
+.theme-blueprint {
+  --ink: #f2f7ff; --muted: #c9dbf7; --head: var(--mono); --body: var(--mono); --radius: 0; --focus: #ffe08a;
+  --card-bg: rgba(8, 40, 92, .8); --card-ink: #f2f7ff; --card-muted: #c9dbf7; --card-bd: 1px solid #f2f7ff;
+  --btn-bg: #f2f7ff; --btn-ink: #0b2a57; --btn-bd: #f2f7ff; --tag-bg: #ffe08a; --tag-ink: #0b2a57;
+  background-color: #0f3d7c;
+  background-image:
+    radial-gradient(circle at 50% 0, rgba(255, 255, 255, .14), transparent 60%),
+    linear-gradient(rgba(242, 247, 255, .26) 1px, transparent 1px), linear-gradient(90deg, rgba(242, 247, 255, .26) 1px, transparent 1px),
+    linear-gradient(rgba(242, 247, 255, .09) 1px, transparent 1px), linear-gradient(90deg, rgba(242, 247, 255, .09) 1px, transparent 1px);
+  background-size: 100% 100%, 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+}
+.theme-blueprint h1 { text-transform: uppercase; letter-spacing: .02em; font-size: clamp(2rem, 5vw, 3.2rem); }
+.theme-blueprint figure { margin: 0 0 2rem; }
+.theme-blueprint figcaption { margin-top: .5rem; font-size: .85rem; color: var(--muted); }
+.theme-blueprint svg { display: block; width: 100%; height: auto; }
+
+/* ---------- 8 · Halftone (canvas: CMY dot screens on paper) ---------- */
+.theme-halftone {
+  --ink: #16141a; --muted: #2a2630; --head: Impact, Haettenschweiler, "Arial Black", sans-serif; --body: var(--sans); --radius: 0; --focus: #0057ff;
+  --plate: rgba(247, 242, 230, .94);
+  --card-bg: #fffdf6; --card-ink: #16141a; --card-muted: #3a3540; --card-bd: 2px solid #16141a; --card-shadow: 6px 6px 0 #ec008c;
+  --btn-bg: #ffed00; --btn-ink: #16141a; --btn-bd: #16141a; --tag-bg: #16141a; --tag-ink: #fffdf6;
+  background: #f7f2e6;
+}
+.theme-halftone h1 { text-transform: uppercase; letter-spacing: .01em; font-weight: 400; }
+
+/* ---------- 11 · Dithered images (canvas: 1-bit Floyd-Steinberg) ---------- */
+.theme-dither {
+  --ink: #1a1a2e; --muted: #26263d; --head: var(--mono); --body: var(--mono); --radius: 0; --focus: #0057ff;
+  --plate: rgba(242, 234, 211, .96);
+  --card-bg: #f2ead3; --card-ink: #1a1a2e; --card-muted: #2c2c46; --card-bd: 2px solid #1a1a2e; --card-shadow: 4px 4px 0 #1a1a2e;
+  --btn-bg: #1a1a2e; --btn-ink: #f2ead3; --btn-bd: #1a1a2e; --tag-bg: #1a1a2e; --tag-ink: #f2ead3;
+  background: #f2ead3;
+}
+
+/* ---------- 13 · Contour lines (canvas: marching squares) ---------- */
+.theme-contour {
+  --ink: #e8fff4; --muted: #bfe9d4; --head: "Palatino Linotype", Georgia, serif; --body: "Palatino Linotype", Georgia, serif; --radius: 4px;
+  --plate: rgba(11, 28, 24, .84); --plate-blur: blur(3px);
+  --card-bg: rgba(9, 28, 24, .88); --card-ink: #e8fff4; --card-muted: #bfe9d4; --card-bd: 1px solid #5fc9a0;
+  --btn-bg: #7fe6b4; --btn-ink: #08201a; --btn-bd: #7fe6b4; --tag-bg: #7fe6b4; --tag-ink: #08201a;
+  background: #10231f;
+}
+
+/* ---------- 15 · Pixel mosaics (canvas: grout + tiles) ---------- */
+.theme-mosaic {
+  --ink: #fff; --muted: #f1ecf7; --head: "Trebuchet MS", var(--sans); --body: var(--sans); --radius: 10px;
+  --plate: rgba(20, 18, 26, .86);
+  --card-bg: #fff7e6; --card-ink: #1a1420; --card-muted: #3d3346; --card-bd: 3px solid #14121a; --card-shadow: 0 6px 0 rgba(0, 0, 0, .35);
+  --btn-bg: #ffd166; --btn-ink: #1a1420; --btn-bd: #ffd166; --tag-bg: #1a1420; --tag-ink: #ffd166;
+  background: #14121a;
+}
+
+/* ---------- 17 · Stippled gradients (canvas: pen dots) ---------- */
+.theme-stipple {
+  --ink: #1b1a2e; --muted: #26253b; --head: Georgia, serif; --body: Georgia, serif; --radius: 3px; --focus: #0057ff;
+  --plate: rgba(245, 239, 224, .95);
+  --card-bg: #fbf7ea; --card-ink: #1b1a2e; --card-muted: #34334a; --card-bd: 1px solid #1b1a2e;
+  --btn-bg: #1b1a2e; --btn-ink: #f5efe0; --btn-bd: #1b1a2e; --tag-bg: #1b1a2e; --tag-ink: #f5efe0;
+  background: #f5efe0;
+}
+
+/* ---------- 18 · Square-dot grid ---------- */
+.theme-dots {
+  --ink: #111; --muted: #222; --head: "Helvetica Neue", Arial, sans-serif; --body: "Helvetica Neue", Arial, sans-serif; --radius: 0; --focus: #0057ff;
+  --card-bg: #fff; --card-ink: #111; --card-muted: #333; --card-bd: 2px solid #111; --card-shadow: 6px 6px 0 #111;
+  --btn-bg: #ff5a1f; --btn-ink: #111; --btn-bd: #111; --tag-bg: #111; --tag-ink: #f3efe6;
+  background: #f3efe6;
+}
+.theme-dots h1 { font-weight: 900; letter-spacing: -.03em; }
+.theme-dots .btn { box-shadow: 3px 3px 0 #111; }
+.theme-dots .deco span { position: absolute; inset: 0; background-position: 100% 0; } /* anchor lattice to the corner the masks radiate from */
+.sq-grey { background-image: var(--sq-grey); -webkit-mask-image: linear-gradient(#000, transparent 85%); mask-image: linear-gradient(#000, transparent 85%); }
+.sq-1 { background-image: var(--sq-12); -webkit-mask-image: radial-gradient(circle at 100% 0, #000 0 264px, transparent 265px); mask-image: radial-gradient(circle at 100% 0, #000 0 264px, transparent 265px); }
+.sq-2 { background-image: var(--sq-8); -webkit-mask-image: radial-gradient(circle at 100% 0, transparent 0 264px, #000 265px 456px, transparent 457px); mask-image: radial-gradient(circle at 100% 0, transparent 0 264px, #000 265px 456px, transparent 457px); }
+.sq-3 { background-image: var(--sq-4); -webkit-mask-image: radial-gradient(circle at 100% 0, transparent 0 456px, #000 457px 648px, transparent 649px); mask-image: radial-gradient(circle at 100% 0, transparent 0 456px, #000 457px 648px, transparent 649px); }
+
+/* ---------- 22 · ASCII and pixels (canvas: characters dissolving into blocks) ---------- */
+.theme-ascii {
+  --ink: #d6ffd6; --muted: #a8e6b5; --head: var(--mono); --body: var(--mono); --radius: 0; --focus: #39ff88;
+  --plate: rgba(5, 12, 8, .9);
+  --card-bg: rgba(6, 16, 10, .92); --card-ink: #d6ffd6; --card-muted: #a8e6b5; --card-bd: 1px solid #2e8a52;
+  --btn-bg: #39ff88; --btn-ink: #04120a; --btn-bd: #39ff88; --tag-bg: #39ff88; --tag-ink: #04120a;
+  background: #07100a;
+}
+.theme-ascii h1::after { content: "_"; animation: blink 1s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }

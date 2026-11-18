@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animations gallery: motion to borrow for future apps</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/lookbook.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+<nav class="tabbar" aria-label="Lookbook">
+  <a class="brand" href="index.html#gallery" title="All designs">◫ Lookbook</a>
+  <span class="an-here" aria-current="page">▶ Animations</span>
+</nav>
+
+<main>
+  <section class="gallery" aria-labelledby="an-title">
+    <header class="gallery-head">
+      <p class="g-eyebrow">Personal motion lookbook</p>
+      <h1 id="an-title">Animations to borrow</h1>
+      <p class="g-lede">Every demo is live. Say <q>add animation AN-07</q>, or hit <b>Copy prompt</b> on a card for a paste-ready description with timing, easing and how it's built. <b>Copy CSS</b> gives a standalone snippet.</p>
+      <p id="an-rm" class="an-rm" hidden>Reduced motion is on: demos are static, as they would be for users who ask for it.</p>
+      <p class="an-rm-toggle"><button id="an-rm-btn" type="button" aria-pressed="false">Preview reduced motion</button></p>
+      <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+    </header>
+    <div class="an-grid" id="an-grid"></div>
+  </section>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<noscript><p style="color:#fff;padding:2rem">This gallery builds its demos with JavaScript. Please enable it.</p></noscript>
+
+<script src="js/animations-data.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>

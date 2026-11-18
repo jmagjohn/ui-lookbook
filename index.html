@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI lookbook: looks and animations to borrow for future apps</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/lookbook.css">
+<link rel="stylesheet" href="css/themes-textures.css">
+<link rel="stylesheet" href="css/themes-patterns.css">
+<link rel="stylesheet" href="css/themes-scenes.css">
+<link rel="stylesheet" href="css/themes-styles.css">
+<link rel="stylesheet" href="css/themes-styles-2.css">
+<!-- pixel font for LB-41; everything falls back to local fonts when offline -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+</head>
+<body>
+
+<nav class="tabbar" aria-label="Lookbook">
+  <a class="brand" href="#gallery" title="All designs">◫ Lookbook</a>
+  <a class="brand alt" href="animations.html" title="Animations gallery">▶ Animations</a>
+  <div class="tabs" id="tablist" role="tablist" aria-label="Pick a design"></div>
+  <div class="tools">
+    <button id="spec-btn" type="button" aria-expanded="false" aria-controls="spec">Spec <b></b></button>
+    <button id="copy-btn" type="button">Copy prompt</button>
+  </div>
+</nav>
+
+<main>
+  <section id="gallery" class="gallery" aria-labelledby="gallery-title" hidden>
+    <header class="gallery-head">
+      <p class="g-eyebrow">Personal UI lookbook</p>
+      <h1 id="gallery-title"><span id="gallery-count"></span> looks to borrow</h1>
+      <p class="g-lede">Every page is a full fake app styled one way. When starting something new, say <q>make the UI like LB-07</q>, or open a page and hit <b>Copy prompt</b> to get a paste-ready description with its palette, type, shapes and technique. Motion lives next door in the <a href="animations.html" style="color:#ffd54a">animations gallery</a> (AN-01 to AN-29).</p>
+      <div class="filters" id="filters" role="group" aria-label="Filter by kind">
+        <button type="button" data-kind="all" aria-pressed="true">All</button>
+        <button type="button" data-kind="style" aria-pressed="false">UI styles</button>
+        <button type="button" data-kind="texture" aria-pressed="false">Textures</button>
+        <button type="button" data-kind="pattern" aria-pressed="false">Patterns</button>
+        <button type="button" data-kind="scene" aria-pressed="false">Scenes</button>
+      </div>
+    </header>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </section>
+  <div id="panels"></div>
+</main>
+
+<aside id="spec" class="spec" aria-labelledby="spec-title" hidden>
+  <header><h2 id="spec-title">Spec</h2><button id="spec-close" type="button" aria-label="Close spec">✕</button></header>
+  <div id="spec-body"></div>
+</aside>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<noscript><p style="color:#fff;padding:2rem">This lookbook builds its pages with JavaScript. Please enable it.</p></noscript>
+
+<script src="js/noise.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/renderers-field.js"></script>
+<script src="js/renderers-image.js"></script>
+<script src="js/content.js"></script>
+<script src="js/content-more.js"></script>
+<script src="js/specs.js"></script>
+<script src="js/deco.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

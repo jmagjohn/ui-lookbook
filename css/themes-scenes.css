@@ -1,0 +1,125 @@
+/* Scene themes: 3 thermal · 4 water ripples · 6 single-hue landscapes · 14 cloud sky · 16 lens · 19 blurred photos · 20 iridescent · 21 impressionist · 25 neon */
+
+/* ---------- 3 · Thermal (canvas: infrared palette) ---------- */
+.theme-thermal {
+  --ink: #fff; --muted: #ece3fb; --head: var(--sans); --body: var(--sans); --radius: 12px;
+  --plate: rgba(10, 4, 24, .8); --plate-blur: blur(8px);
+  --card-bg: rgba(12, 5, 30, .82); --card-ink: #fff; --card-muted: #e0d4f5; --card-bd: 1px solid rgba(255, 164, 27, .5); --blur: blur(6px);
+  --btn-bg: #ffb347; --btn-ink: #1a0a00; --btn-bd: #ffb347; --tag-bg: #ffb347; --tag-ink: #1a0a00;
+  background: #0a0418;
+}
+.theme-thermal h1 { font-weight: 800; }
+
+/* ---------- 4 · Water ripples (animated canvas: raindrop rings over a slow swell) ---------- */
+.theme-ripple {
+  --ink: #f4fdff; --muted: #d3f0f4; --head: var(--sans); --body: var(--sans); --radius: 22px;   /* no backdrop blur: re-blurring a moving canvas every frame is the expensive part */
+  --plate: linear-gradient(100deg, rgba(2, 22, 34, .78), rgba(2, 22, 34, .45));
+  --card-bg: rgba(3, 31, 46, .8); --card-ink: #f4fdff; --card-muted: #cfeaf0; --card-bd: 1px solid rgba(255, 255, 255, .28); --card-shadow: 0 10px 30px rgba(0, 20, 30, .35);
+  --btn-bg: #f4fdff; --btn-ink: #04303f; --btn-bd: #f4fdff; --tag-bg: #7fe3f0; --tag-ink: #03303d; --accent: #7fe3f0; --accent-ink: #03303d;
+  background: linear-gradient(165deg, #031f2e 0%, #0a5566 55%, #0b6b7c 100%);
+}
+
+/* ---------- 6 · Single-hue landscapes (canvas: one hue, many lightnesses) ---------- */
+.theme-landscape {
+  --ink: #eafff9; --muted: #c4e9df; --head: var(--sans); --body: var(--sans); --radius: 16px;
+  --plate: rgba(8, 28, 24, .8); --plate-blur: blur(6px);
+  --card-bg: rgba(8, 30, 26, .84); --card-ink: #eafff9; --card-muted: #c4e9df; --card-bd: 1px solid rgba(160, 240, 220, .35); --blur: blur(6px);
+  --btn-bg: #bff5e6; --btn-ink: #06201b; --btn-bd: #bff5e6; --tag-bg: #bff5e6; --tag-ink: #06201b;
+  background: #0f2a25;
+}
+.theme-landscape h1 { font-weight: 300; letter-spacing: -.01em; }
+
+/* ---------- 14 · Cloud sky ---------- */
+.theme-cloud {
+  --ink: #0b2545; --muted: #0b2545; --head: var(--sans); --body: var(--sans); --radius: 24px; --blur: blur(10px); --focus: #0b2545;
+  --card-bg: rgba(255, 255, 255, .82); --card-ink: #0b2545; --card-muted: #2a4a73; --card-shadow: 0 8px 28px rgba(11, 37, 69, .18);
+  --btn-bg: #0b2545; --btn-ink: #fff; --btn-bd: #0b2545; --tag-bg: #0b2545; --tag-ink: #fff;
+  background: linear-gradient(180deg, #4a9ae6 0%, #7cbcf2 40%, #cfe6fa 85%, #eef7fe 100%);
+}
+.sun { position: absolute; top: -140px; right: -90px; width: 460px; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #fffbe0 0 14%, rgba(255, 255, 255, .6) 30%, rgba(255, 255, 255, 0) 68%); } /* white falloff: yellow-over-blue goes green */
+.cloud-layer { position: absolute; top: 0; left: 0; width: 160%; height: 100%; animation: drift 90s ease-in-out infinite alternate; }
+.cloud-layer.near { animation-duration: 55s; opacity: .95; }
+.cloud-layer.far { opacity: .75; }
+@keyframes drift { to { transform: translateX(-37.5%); } }
+
+/* ---------- 16 · Lens distortion (canvas: bubble lenses) ---------- */
+.theme-lens {
+  --ink: #f4f6ff; --muted: #d4dbf5; --head: var(--sans); --body: var(--sans); --radius: 14px;
+  --plate: rgba(8, 10, 24, .78); --plate-blur: blur(6px);
+  --card-bg: rgba(10, 12, 30, .84); --card-ink: #f4f6ff; --card-muted: #d4dbf5; --card-bd: 1px solid rgba(140, 200, 255, .4); --blur: blur(6px);
+  --btn-bg: #7fd4ff; --btn-ink: #04101a; --btn-bd: #7fd4ff; --tag-bg: #7fd4ff; --tag-ink: #04101a;
+  background: #0b0e1a;
+}
+
+/* ---------- 19 · Blurred photos (canvas drawn small, blurred hard here, scaled up to hide the soft edges) ---------- */
+.theme-blurred {
+  --ink: #fff; --muted: #fbeee0; --head: var(--sans); --body: var(--sans); --radius: 22px; --blur: blur(20px);
+  --plate: rgba(20, 14, 40, .5); --plate-blur: blur(16px);
+  --card-bg: rgba(20, 14, 40, .62); --card-ink: #fff; --card-muted: #f3e6dc; --card-bd: 1px solid rgba(255, 255, 255, .3);
+  --btn-bg: #fff; --btn-ink: #2a1a3a; --btn-bd: #fff; --tag-bg: #ffd9a0; --tag-ink: #2a1a3a;
+  background: #1b2347;
+}
+.theme-blurred .deco-canvas { filter: blur(26px) saturate(1.25); transform: scale(1.12); }
+
+/* ---------- 20 · Iridescent shapes ---------- */
+.theme-iridescent {
+  --ink: #f6f3ff; --muted: #d9d3f0; --head: var(--sans); --body: var(--sans); --radius: 20px; --blur: blur(10px);
+  --plate: rgba(11, 10, 22, .72); --plate-blur: blur(8px);
+  --card-bg: transparent; --card-ink: #f6f3ff; --card-muted: #d9d3f0; --card-bd: 1.5px solid transparent;
+  --card-tex: linear-gradient(rgba(16, 13, 38, .86), rgba(16, 13, 38, .86)), linear-gradient(120deg, #ff7eb3, #ffd86f, #7dffb3, #6fd3ff, #b69cff, #ff7eb3);   /* dark fill + rainbow border */
+  --btn-bg: #f6f3ff; --btn-ink: #14102e; --btn-bd: #f6f3ff; --tag-bg: #b69cff; --tag-ink: #120d2a;
+  background: radial-gradient(circle at 15% 20%, rgba(182, 156, 255, .18), transparent 45%), radial-gradient(circle at 85% 70%, rgba(111, 211, 255, .14), transparent 45%), #0b0a16;
+}
+.theme-iridescent .card, .theme-iridescent .stat, .theme-iridescent .rows li { background-origin: border-box; background-clip: padding-box, border-box; }
+.iri { position: absolute;   /* foil: a soft highlight over diagonal rainbow bands (a conic gradient shows a pie-chart apex) */
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 42%), linear-gradient(135deg, #ff7eb3 0%, #ffd86f 22%, #7dffb3 45%, #6fd3ff 68%, #b69cff 88%, #ff7eb3 100%);
+  box-shadow: inset -18px -22px 40px rgba(0, 0, 20, .45), inset 14px 14px 30px rgba(255, 255, 255, .55); animation: floaty 14s ease-in-out infinite alternate; }
+.iri::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(135deg, rgba(255, 255, 255, .65), rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, .25) 80%); mix-blend-mode: overlay; }
+.iri-blob { top: 6%; right: 5%; width: 360px; height: 360px; border-radius: 62% 38% 55% 45% / 48% 58% 42% 52%; }
+.iri-orb { top: 50%; right: 2.5%; width: 110px; height: 110px; border-radius: 50%; filter: hue-rotate(70deg); animation-delay: -5s; }
+.iri-ring { top: 42%; left: -100px; width: 300px; height: 300px; border-radius: 50%; animation-delay: -8s;
+  -webkit-mask-image: radial-gradient(circle, transparent 0 44%, #000 45%); mask-image: radial-gradient(circle, transparent 0 44%, #000 45%); }
+.iri-pill { bottom: 12%; right: -70px; width: 340px; height: 120px; border-radius: 999px; transform: rotate(-24deg); animation-delay: -2s; }
+.iri-cube { top: 64%; left: 22%; width: 150px; height: 150px; border-radius: 28px; transform: rotate(18deg); animation-delay: -11s; filter: hue-rotate(-60deg); }
+@keyframes floaty { to { translate: 0 -26px; rotate: 6deg; } }
+
+/* ---------- 21 · Impressionist paintings (canvas: brush strokes) ---------- */
+.theme-impressionist {
+  --ink: #2b2320; --muted: #4a3f38; --head: Georgia, serif; --body: Georgia, serif; --radius: 4px; --focus: #2a4d8f;
+  --plate: rgba(250, 244, 230, .93);
+  --card-bg: #faf4e6; --card-ink: #2b2320; --card-muted: #4f4239; --card-bd: 1px solid #d9c9a3;
+  --card-shadow: 0 0 0 6px #fbf6ea, 0 0 0 7px #c9b98f, 0 10px 24px rgba(0, 0, 0, .3);   /* picture-frame mat */
+  --btn-bg: #2a4d8f; --btn-ink: #fff; --btn-bd: #2a4d8f; --tag-bg: #2a4d8f; --tag-ink: #fff;
+  background: #2b3a5c;
+}
+.theme-impressionist h1 { font-style: italic; font-weight: 400; }
+.theme-impressionist .cards, .theme-impressionist .stats, .theme-impressionist .rows { padding: 0 8px; gap: 1.1rem; }
+
+/* ---------- 25 · Neon signage (pure CSS: brick wall, light spill, glowing tubes) ---------- */
+.theme-neon {
+  --ink: #fff; --muted: #f3dcff; --head: "Arial Rounded MT Bold", "Trebuchet MS", var(--sans); --body: var(--sans); --radius: 14px; --focus: #33f0ff;
+  --plate: rgba(12, 6, 14, .74);
+  --card-bg: rgba(14, 8, 18, .9); --card-ink: #fff; --card-muted: #ead8f4; --card-bd: 2px solid #33f0ff;
+  --card-shadow: 0 0 6px #33f0ff, 0 0 20px rgba(51, 240, 255, .5), inset 0 0 14px rgba(51, 240, 255, .3);
+  --btn-bg: #ff2bd6; --btn-ink: #1a0016; --btn-bd: #ff9bf0; --tag-bg: #33f0ff; --tag-ink: #00191c; --accent: #ff2bd6; --accent-ink: #1a0016;
+  background-color: #150c10;
+  background-image:
+    radial-gradient(ellipse 60% 45% at 80% 12%, rgba(255, 43, 214, .32), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 12% 70%, rgba(51, 240, 255, .18), transparent 70%),
+    radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(0, 0, 0, .7)),
+    var(--felt-noise),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='80'><rect width='120' height='80' fill='%23120a0c'/><g fill='%233a1f24'><rect x='1' y='1' width='57' height='37' rx='2'/><rect x='61' y='1' width='57' height='37' rx='2' fill='%23321a1e'/><rect x='-29' y='41' width='57' height='37' rx='2' fill='%23412328'/><rect x='31' y='41' width='57' height='37' rx='2'/><rect x='91' y='41' width='57' height='37' rx='2' fill='%23412328'/></g></svg>");
+  background-blend-mode: screen, screen, normal, overlay, normal;
+}
+.theme-neon .hero { max-width: min(40rem, calc(100% + 2.5rem)); }
+.theme-neon h1 { color: #fff; text-shadow: 0 0 2px #fff, 0 0 8px #ff2bd6, 0 0 18px #ff2bd6, 0 0 38px #ff2bd6, 0 0 70px rgba(255, 43, 214, .7); animation: flicker 6s infinite; }
+.theme-neon h2 { color: #fff; text-shadow: 0 0 6px #33f0ff, 0 0 16px #33f0ff; }
+.theme-neon .btn { box-shadow: 0 0 10px rgba(255, 43, 214, .7), 0 0 24px rgba(255, 43, 214, .4); }
+.theme-neon .btn.ghost { box-shadow: 0 0 8px rgba(255, 255, 255, .35); }
+.neon-sign { position: absolute; top: 3.5rem; right: 4%; width: 260px; text-align: center; animation: flicker 9s infinite 2s; }
+.neon-sign svg { width: 100%; stroke-width: 6; }
+.tube-cyan { stroke: #c9fbff; filter: drop-shadow(0 0 3px #33f0ff) drop-shadow(0 0 10px #33f0ff) drop-shadow(0 0 24px #33f0ff); }
+.tube-pink { stroke: #ffd2f5; filter: drop-shadow(0 0 3px #ff2bd6) drop-shadow(0 0 10px #ff2bd6) drop-shadow(0 0 24px #ff2bd6); }
+.neon-sign span { display: block; margin-top: .4rem; font: italic 700 2.6rem "Segoe Script", "Brush Script MT", cursive; color: #fff6c9; text-shadow: 0 0 4px #ffd84a, 0 0 14px #ffb800, 0 0 30px #ff9500; }
+@media (max-width: 1100px) { .neon-sign { opacity: .35; width: 200px; } }
+@keyframes flicker { 0%, 18%, 22%, 62%, 64%, 100% { opacity: 1; } 20%, 63% { opacity: .55; } }
